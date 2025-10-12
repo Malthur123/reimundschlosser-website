@@ -1,0 +1,660 @@
+/* --- Global Reset & Best Practices --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* --- Google Font 'Lato' & Global Styles --- */
+html {
+    overflow-y: scroll; /* This forces the main scrollbar to always be present, fixing the "jump" */
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    background-color: #FFFFFF;
+    color: #1A1A1A;
+    line-height: 1.7;
+}
+
+/* --- Reusable Container for Main Content --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px; /* This padding is for the main content, NOT the header */
+}
+
+/*
+==============================================
+HEADER SECTION - FINAL & WORKING
+==============================================
+*/
+
+/* This is the main purple bar */
+.main-header {
+    background-color: #270790;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    height: 65px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* This is the 1200px container INSIDE the purple bar */
+.main-header .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px; /* THE KEY FIX: Resets the unwanted padding from the global .container rule */
+}
+
+
+/*
+==============================================
+RESPONSIVE STYLES FOR HEADER
+==============================================
+*/
+
+
+/* This is your name's link */
+.site-title {
+    color: #FFFFFF;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+
+.site-title:hover {
+    color: #36F493;
+}
+
+/* This is the navigation menu on the right */
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    color: #f0f0f0;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.main-nav a:hover {
+    color: #FFFFFF;
+}
+
+
+/*
+==============================================
+MAIN CONTENT & FOOTER (Unchanged)
+==============================================
+*/
+
+main {
+    padding-top: 2rem;
+}
+
+main h2 {
+    color: #270790;
+    font-weight: 700;
+    font-size: 2.2rem;
+    border-left: 5px solid #36F493;
+    padding-left: 15px;
+    margin-bottom: 2rem;
+}
+
+main a {
+    color: #00C9FF;
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 2px dotted #00c9ff80;
+    transition: color 0.3s;
+}
+
+main a:hover {
+    color: #F9C80E;
+    border-bottom-style: solid;
+}
+
+/*
+==============================================
+FOOTER SECTION - NEW
+==============================================
+*/
+footer {
+    padding: 3rem 0;
+    margin-top: 3rem;
+    background-color: #1A1A1A;
+    color: #F8F9FA;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* The flex container for the columns */
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 2rem; /* Adds space before the copyright line */
+}
+
+/* Styling for the column "headings" */
+.footer-column strong {
+    font-weight: 700;
+    color: #FFFFFF; /* Makes the headings pure white to stand out */
+    margin-bottom: 0.5rem;
+    display: inline-block; /* Allows margin-bottom to apply */
+}
+
+/* Styling for the email link */
+.footer-column a {
+    color: #F8F9FA;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #36F493; /* Our electric green for a nice hover effect */
+}
+
+/* The bottom copyright line and separator */
+.footer-bottom {
+    border-top: 1px solid #444; /* A subtle separator line */
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+
+
+/*
+==============================================
+RESPONSIVE STYLES FOR FOOTER
+==============================================
+*/
+/* For tablets and mobile, stack the columns */
+@media (max-width: 1000px) {
+    .footer-columns {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-column {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/*
+==============================================
+HOMEPAGE INTRO SECTION
+==============================================
+*/
+
+/* This is the Flexbox container for the two columns */
+.intro-layout {
+    display: flex;
+    align-items: center; /* Vertically aligns the text and image */
+    gap: 40px; /* Creates space between the text and image */
+}
+
+/* Replace the old rules with these */
+.intro-text {
+    flex: 1; /* This tells the text to take up all remaining flexible space */
+}
+
+.intro-image {
+    flex-basis: 550px; /* This suggests a starting width of 450px for the image column */
+    flex-shrink: 0; /* This prevents the image column from shrinking smaller than its content */
+    text-align: center;
+}
+
+/* This styles the image itself for a pill shape */
+.intro-image img {
+    max-width: 100%; /* Makes the image responsive */
+    height: 300px; /* Fixed height for the pill shape (adjust as needed) */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 150px; /* THIS creates the pill shape (adjust for desired roundness) */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/*
+==============================================
+RESPONSIVE STYLES FOR INTRO SECTION
+==============================================
+*/
+@media (max-width: 1000px) {
+    .intro-layout {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .intro-text {
+        text-align: center;
+    }
+
+    .intro-image {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        flex-basis: auto; /* <-- ADD THIS LINE */
+        order: -1; /* <-- ADD THIS LINE */
+    }
+
+
+}
+
+/*
+==============================================
+COMPANY LOGOS SECTION
+==============================================
+*/
+.company-logos {
+    padding: 0.5rem 0; /* Adds space above and below the section */
+    background-color: #F8F9FA; /* A very light grey to separate the section */
+}
+
+/* A reusable heading style for new sections */
+.section-heading {
+    text-align: center;
+    color: #270790;
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+}
+
+/* This creates the 3x2 grid */
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 50px; /* Space between logos */
+    align-items: center;
+}
+
+.logo-item {
+    text-align: center; /* Horizontally centers the image in its grid cell */
+}
+
+.logo-item img {
+    max-height: 50px; /* Controls the height, ensuring uniformity */
+    max-width: 100%; /* Ensures logos are responsive */
+    filter: grayscale(100%); /* Makes logos grayscale by default for a clean look */
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+}
+
+/* This makes the logo colorize and pop on hover */
+.logo-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1); /* Slightly enlarges the logo on hover */
+}
+
+/*
+==============================================
+RESPONSIVE STYLES FOR LOGO GRID
+==============================================
+*/
+/* For tablets and smaller screens, go to 2 columns */
+@media (max-width: 1000px) {
+    .logo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* For mobile phones, stack them in 1 column */
+@media (max-width: 480px) {
+    .logo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*
+==============================================
+CONTENT FEATURE SECTION (Image + Text)
+==============================================
+*/
+.content-feature {
+    padding: 1.5rem 0 4rem; /* Top is 1.5rem, L/R is 0, Bottom is 4rem */
+}
+
+/* Change it to this */
+.content-feature h3,
+.final-feature h3 {
+    color: #270790;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/*
+==============================================
+FEATURE BANNER STYLE (Full-Width Image)
+==============================================
+*/
+.feature-banner {
+    margin-bottom: 2rem; /* Adds space between the image and the text below */
+    margin-top: 2rem; /* Adds space ABOVE the image */
+}
+
+.feature-banner img {
+    width: 100%; /* Makes the image span the full width of the container */
+    height: auto; /* Sets a fixed height for the banner (adjust as needed) */
+    object-fit: cover; /* Crops the image to fit without distortion */
+    border-radius: 999px; /* Adds soft, modern corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+/*
+==============================================
+GLOBAL TICKER SECTION
+==============================================
+*/
+.global-ticker-section {
+    padding: 0.5rem 0;
+    background-color: #F8F9FA; /* Light grey to separate the section */
+}
+
+/* The main container that hides the overflow */
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden; /* This is crucial, it hides the items before they scroll into view */
+    background-color: #FFFFFF;
+    padding: 2rem 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* The long track that will be animated */
+.ticker-track {
+    display: flex; /* Lines up all items horizontally */
+    white-space: nowrap; /* Prevents items from wrapping to a new line */
+    will-change: transform;
+    /* Apply the animation here */
+    animation: scroll-animation 40s linear infinite;
+}
+
+/* Styling for each individual country item */
+.ticker-item {
+    display: flex; /* This is the key change */
+    align-items: center; /* This vertically centers the flag and text */
+    gap: 15px; /* This adds space between the flag and the text */
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1A1A1A;
+    padding: 0 2rem;
+    position: relative;
+}
+
+.ticker-item img {
+    height: 30px; /* Controls the height of the flags */
+    width: auto; /* Maintains the aspect ratio */
+    border-radius: 4px; /* Optional: adds slightly rounded corners to the flags */
+}
+
+/* Pauses the animation when the user hovers over it */
+.ticker-wrap:hover .ticker-track {
+    animation-play-state: paused;
+}
+
+
+/* The animation definition */
+@keyframes scroll-animation {
+    /* Starts with the track off-screen to the right */
+    from {
+        transform: translateX(0);
+    }
+    /* Moves the track to the left until the second list is in the starting position */
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/*
+==============================================
+MAP CONTAINER STYLING
+==============================================
+*/
+
+/* This centers the container for the map */
+.map-container {
+    max-width: 900px; /* Adjust this value to make the map wider or narrower */
+    margin: 0 auto; /* This centers the block on the page */
+    margin-bottom: 0.5rem; /* Adds space between the map and the ticker below */
+}
+
+/* THIS IS THE KEY FIX: This rule makes the image responsive */
+.map-container img {
+    width: 100%; /* Tells the image to never be wider than its container */
+    height: auto; /* Ensures the aspect ratio is maintained (no stretching) */
+}
+
+/*
+==============================================
+FINAL FEATURE SECTION
+==============================================
+*/
+.final-feature {
+    padding: 2rem 0; /* Adds consistent spacing above and below */
+}
+
+/*
+==============================================
+CALL TO ACTION BUTTON
+==============================================
+*/
+.cta-button {
+    display: inline-block; /* Allows us to add padding and other styles */
+    background-color: #F9C80E; /* Our sunny yellow accent color! */
+    color: #1A1A1A; /* Dark text for high contrast */
+    padding: 12px 25px;
+    margin-top: 1.5rem; /* Adds some space above the button */
+    border-radius: 50px; /* Makes it a nice pill shape */
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px); /* Lifts the button slightly on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Adds a subtle shadow */
+}
+
+/*
+==============================================
+CONTACT FORM SECTION
+==============================================
+*/
+.form-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+}
+
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto; /* Centers the form */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #1A1A1A;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #270790; /* Highlight with our primary purple */
+    box-shadow: 0 0 0 3px rgba(39, 7, 144, 0.15);
+}
+
+.contact-form button {
+    border: none; /* Remove default button border */
+    cursor: pointer; /* Show a hand cursor on hover */
+}
+
+/* --- NEW CODE FIX: BUTTON FOCUS STYLE --- */
+/* This code targets all main buttons when they are focused (e.g., after a page load, or when using the Tab key). */
+/* It removes the default browser highlight and replaces it with a style that matches your form fields for a consistent look. */
+.cta-button:focus,
+.contact-form button:focus {
+    outline: none; /* Removes the unwanted default outline (the green highlight) */
+    box-shadow: 0 0 0 3px rgba(39, 7, 144, 0.15); /* Adds the same purple glow used on your form inputs */
+}
+
+/*
+==============================================
+RESPONSIVE SPACING ADJUSTMENTS
+==============================================
+*/
+@media (max-width: 1000px) {
+    /* Remove bottom padding from the intro container */
+    main > .container {
+        padding-bottom: 4rem;
+    }
+
+    /* Add a controlled amount of space above the logos section on mobile */
+    .company-logos {
+        padding-top: 0; /* <-- ADJUST THIS VALUE */
+    }
+}
+
+/*
+==============================================
+RESPONSIVE STYLES FOR GLOBAL TICKER
+==============================================
+*/
+@media (max-width: 1000px) {
+    .ticker-item {
+        /* Reduce the font size for the country names */
+        font-size: 1.1rem;
+
+        /* Reduce the space between the flag and the text */
+        gap: 10px;
+
+        /* Reduce the horizontal space between each ticker item */
+        padding: 0 1rem;
+    }
+
+    .ticker-item img {
+        /* Make the flag images smaller */
+        height: 22px;
+    }
+}
+
+/*
+==============================================
+RESPONSIVE STYLES FOR TICKER ANIMATION
+==============================================
+*/
+@media (max-width: 1000px) {
+    .ticker-track {
+        /* Speed up the animation from 40s on desktop to 25s on mobile */
+        animation-duration: 10s;
+    }
+}
+
+/*
+==============================================
+HAMBURGER MENU STYLES
+==============================================
+*/
+
+/* --- The Hamburger Button Itself --- */
+.hamburger-menu {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Mobile View (< 768px) --- */
+@media (max-width: 1000px) {
+    /* Show the hamburger button */
+    .hamburger-menu {
+        display: flex;
+    }
+
+    /* Hide the original navigation links */
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 65px; /* Position it below the header */
+        left: 0;
+        width: 100%;
+        background-color: #270790; /* Same as header background */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* This class will be added by JavaScript to show the menu */
+    .main-nav.is-active {
+        display: block;
+    }
+
+    /* Stack the navigation links vertically */
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-nav li {
+        text-align: right; /* <-- Aligns the links to the right */
+        width: 100%;
+    }
+
+    .main-nav a {
+        /* Reduce top/bottom padding and add side padding */
+        padding: 0.05rem 20px; /* <-- Reduces space and adds side margin */
+        display: block;
+        width: 100%;
+    }
+
+    /* Add extra space after the last link in the mobile menu */
+    .main-nav li:last-child a {
+        padding-bottom: 1rem; 
+    }
+}
+
+/* --- END OF NEW CODE --- */

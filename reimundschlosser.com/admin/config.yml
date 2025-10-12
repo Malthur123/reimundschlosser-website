@@ -1,0 +1,22 @@
+# The backend tells the CMS how to connect to your repository.
+backend:
+  name: git-gateway
+  branch: main # Or master, depending on your default branch name
+
+# This is where your images and other media will be uploaded.
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# This defines your content types. Right now, we only have one: Blog.
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "posts" # The folder where the files will be created
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template
+    fields: # The fields for each document, like in a form
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Author", name: "author", widget: "string", default: "Reimund Schlosser"}
+      - {label: "Body", name: "body", widget: "markdown"}
