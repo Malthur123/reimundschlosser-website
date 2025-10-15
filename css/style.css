@@ -667,4 +667,23 @@ article img { /* 'article' targets images within individual blog posts */
     display: block;  /* Helps prevent extra space below the image */
 }
 
+/*
+==============================================
+BLOG STYLES
+==============================================
+*/
+
+/* --- Style for the links on the blog overview page --- */
+.blog-post-list h3 a {
+    color: #270790; /* Use the primary purple color like other headings */
+    text-decoration: none; /* Remove the default underline */
+    border-bottom: none;   /* Remove the custom dotted border */
+    transition: color 0.3s ease; /* Add a smooth transition for the hover effect */
+}
+
+/* --- Hover effect for the blog overview links --- */
+.blog-post-list h3 a:hover {
+    color: #36F493; /* Change to the site's electric green on hover */
+}
+
 /* --- END OF NEW CODE --- */
