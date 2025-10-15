@@ -657,4 +657,14 @@ HAMBURGER MENU STYLES
     }
 }
 
+/* Make images inside main content areas responsive */
+.blog-post-list img,
+.content-feature img,
+.final-feature img,
+article img { /* 'article' targets images within individual blog posts */
+    max-width: 100%; /* Ensures the image never exceeds the width of its parent */
+    height: auto;    /* Maintains the image's aspect ratio */
+    display: block;  /* Helps prevent extra space below the image */
+}
+
 /* --- END OF NEW CODE --- */
