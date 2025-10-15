@@ -706,4 +706,108 @@ BLOG POST LIST STYLING
     border-bottom: none;
 }
 
+/*
+==============================================
+PORTFOLIO PAGE STYLES
+==============================================
+*/
+
+/* --- Intro Text --- */
+.page-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* --- The 3x2 Grid --- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* --- Individual Tile Styling --- */
+.portfolio-tile {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.portfolio-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.portfolio-tile img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-tile:hover img {
+    transform: scale(1.05);
+}
+
+/* --- Text Overlay on Tile --- */
+.tile-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: #FFFFFF;
+}
+
+.tile-overlay h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #FFFFFF;
+}
+
+/*
+==============================================
+PORTFOLIO RESPONSIVE STYLES
+==============================================
+*/
+@media (max-width: 992px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+}
+
+/*
+==============================================
+INDIVIDUAL PROJECT PAGE STYLES
+==============================================
+*/
+.project-page h2, .project-page h3 {
+    text-align: center;
+}
+
+.project-banner {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 3rem;
+    font-weight: 700;
+}
+
 /* --- END OF NEW CODE --- */
