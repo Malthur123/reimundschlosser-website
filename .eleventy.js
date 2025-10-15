@@ -1,4 +1,12 @@
+const { DateTime } = require("luxon");
+
 module.exports = function(eleventyConfig) {
+
+  // Create a custom filter for readable dates
+  eleventyConfig.addFilter("readableDate", dateObj => {
+    return DateTime.fromJSDate(dateObj).toFormat("dd LLL yyyy");
+  });
+
   // Passthrough static files from the root
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("images");
@@ -11,10 +19,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("site.webmanifest");
 
   return {
-    // Tell Eleventy that the source files are in the root of the project
     dir: {
       input: ".",
-      output: "_site", // And the final website should be built into a folder called "_site"
+      output: "_site",
     }
   };
 };

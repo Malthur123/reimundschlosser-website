@@ -3,7 +3,7 @@ layout: base.njk
 ---
 <article class="container">
     <h1>{{ title }}</h1>
-    <p><time datetime="{{ date }}">{{ date | date: "%B %d, %Y" }}</time> by {{ author }}</p>
+    <p><time datetime="{{ date }}">{{ date | readableDate }}</time> by {{ author }}</p>
     {% if thumbnail %}
         <img src="{{ thumbnail }}" alt="Featured image for {{ title }}">
     {% endif %}
