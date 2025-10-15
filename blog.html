@@ -8,12 +8,12 @@ title: Blog
     <p>A professional blog exploring the dynamic intersection of HR, technology, and culture. This space offers articles and insights on the future of work, innovative people strategies, and building a thriving workplace, alongside occasional personal reflections. If you have any thoughts or questions about the topics I cover, I encourage you to reach out.</p>
     
     <div class="blog-post-list">
-        {%- for post in collections.post | reverse -%}
+        {%- for post in collections.postsReversed -%}
             <article>
                 <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
                 <p><time datetime="{{ post.date }}">{{ post.date | readableDate }}</time> by {{ post.data.author }}</p>
                 {% if post.data.thumbnail %}
-                    <img src="{{ post.data.thumbnail }}" alt="" width="300">
+                    <img src="{{ post.data.thumbnail }}" alt="" width="400">
                 {% endif %}
             </article>
         {%- endfor -%}

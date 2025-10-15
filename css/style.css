@@ -686,4 +686,24 @@ BLOG STYLES
     color: #36F493; /* Change to the site's electric green on hover */
 }
 
+/*
+==============================================
+BLOG POST LIST STYLING
+==============================================
+*/
+
+/* Add space and a separator line between each post on the blog page */
+.blog-post-list article {
+    padding-bottom: 2.5rem; /* Creates space inside the border */
+    margin-bottom: 2.5rem;  /* Creates space outside the border */
+    border-bottom: 1px solid #eee; /* Adds a subtle separator line */
+}
+
+/* Remove the spacing and border from the very last post to avoid extra space at the bottom */
+.blog-post-list article:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
 /* --- END OF NEW CODE --- */

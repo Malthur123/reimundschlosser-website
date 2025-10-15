@@ -7,6 +7,15 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toFormat("dd LLL yyyy");
   });
 
+  // START: New code for custom collection
+  // Create a custom collection for blog posts, sorted by date (newest first)
+  eleventyConfig.addCollection("postsReversed", function(collectionApi) {
+    return collectionApi.getFilteredByTag("post").sort(function(a, b) {
+      return b.date - a.date; // Sort by date in descending order
+    });
+  });
+  // END: New code for custom collection
+
   // Passthrough static files from the root
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("images");
