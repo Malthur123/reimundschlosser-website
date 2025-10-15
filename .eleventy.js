@@ -1,19 +1,20 @@
 module.exports = function(eleventyConfig) {
-  // Passthrough static files
-  eleventyConfig.addPassthroughCopy("reimundschlosser.com/css");
-  eleventyConfig.addPassthroughCopy("reimundschlosser.com/images");
-  eleventyConfig.addPassthroughCopy("reimundschlosser.com/js");
-  eleventyConfig.addPassthroughCopy("reimundschlosser.com/admin");
-  eleventyConfig.addPassthroughCopy("reimundschlosser.com/favicon.ico");
-  eleventyConfig.addPassthroughCopy("reimundschlosser.com/apple-touch-icon.png");
-  eleventyConfig.addPassthroughCopy("reimundschlosser.com/favicon-16x16.png");
-  eleventyConfig.addPassthroughCopy("reimundschlosser.com/favicon-32x32.png");
-  eleventyConfig.addPassthroughCopy("reimundschlosser.com/site.webmanifest");
+  // Passthrough static files from the root
+  eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy("js");
+  eleventyConfig.addPassthroughCopy("admin");
+  eleventyConfig.addPassthroughCopy("favicon.ico");
+  eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
+  eleventyConfig.addPassthroughCopy("favicon-16x16.png");
+  eleventyConfig.addPassthroughCopy("favicon-32x32.png");
+  eleventyConfig.addPassthroughCopy("site.webmanifest");
 
   return {
+    // Tell Eleventy that the source files are in the root of the project
     dir: {
-      input: "reimundschlosser.com",
-      output: "reimundschlosser.com/_site",
+      input: ".",
+      output: "_site", // And the final website should be built into a folder called "_site"
     }
   };
 };
